@@ -343,3 +343,39 @@
 2024-03-29 22:08:35,488 - root - INFO - Application started. Type 'exit' to exit.
 2024-03-29 22:08:35,488 - root - INFO - Application exit.
 2024-03-29 22:08:35,489 - root - INFO - Application shutdown.
+2024-03-29 22:26:24,605 - root - INFO - Logging configured
+2024-03-29 22:26:24,607 - root - INFO - Enviornment variables loaded.
+2024-03-29 22:26:24,612 - root - INFO - Logging configured
+2024-03-29 22:26:24,614 - root - INFO - Enviornment variables loaded.
+2024-03-29 22:26:24,616 - root - INFO - Command 'AddCommand' from plugin 'add' registered.
+2024-03-29 22:26:24,617 - root - INFO - Command 'DivideCommand' from plugin 'divide' registered.
+2024-03-29 22:26:24,620 - root - INFO - Command 'ExitCommand' from plugin 'exit' registered.
+2024-03-29 22:26:24,622 - root - INFO - Command 'MultiplyCommand' from plugin 'multiply' registered.
+2024-03-29 22:26:24,623 - root - INFO - Command 'SubtractCommand' from plugin 'subtract' registered.
+2024-03-29 22:26:24,624 - root - INFO - Application started. Type 'exit' to exit.
+2024-03-29 22:26:24,624 - root - INFO - Application exit.
+2024-03-29 22:26:24,624 - root - INFO - Application shutdown.
+2024-03-29 22:26:24,632 - root - INFO - Logging configured
+2024-03-29 22:26:24,633 - root - INFO - Enviornment variables loaded.
+2024-03-29 22:26:24,634 - root - INFO - Command 'AddCommand' from plugin 'add' registered.
+2024-03-29 22:26:24,635 - root - INFO - Command 'DivideCommand' from plugin 'divide' registered.
+2024-03-29 22:26:24,637 - root - INFO - Command 'ExitCommand' from plugin 'exit' registered.
+2024-03-29 22:26:24,638 - root - INFO - Command 'MultiplyCommand' from plugin 'multiply' registered.
+2024-03-29 22:26:24,639 - root - INFO - Command 'SubtractCommand' from plugin 'subtract' registered.
+2024-03-29 22:26:24,639 - root - INFO - Application started. Type 'exit' to exit.
+2024-03-29 22:26:24,640 - root - INFO - Application exit.
+2024-03-29 22:26:24,640 - root - INFO - Application shutdown.
+2024-03-29 22:26:35,738 - root - INFO - Logging configured
+2024-03-29 22:26:35,738 - root - INFO - Enviornment variables loaded.
+2024-03-29 22:26:35,741 - root - INFO - Command 'AddCommand' from plugin 'add' registered.
+2024-03-29 22:26:35,741 - root - INFO - Command 'DivideCommand' from plugin 'divide' registered.
+2024-03-29 22:26:35,745 - root - INFO - Command 'ExitCommand' from plugin 'exit' registered.
+2024-03-29 22:26:35,746 - root - INFO - Command 'MultiplyCommand' from plugin 'multiply' registered.
+2024-03-29 22:26:35,747 - root - INFO - Command 'SubtractCommand' from plugin 'subtract' registered.
+2024-03-29 22:26:35,747 - root - INFO - Application started. Type 'exit' to exit.
+2024-03-29 22:27:07,524 - root - INFO - The result of 2 + 5 is 7
+2024-03-29 22:27:25,677 - root - INFO - The result of 129 - 92 is 37
+2024-03-29 22:27:34,047 - root - INFO - The result of 3 * 4 is 12
+2024-03-29 22:27:45,280 - root - INFO - The result of 10000 / 10 is 1000
+2024-03-29 22:28:57,228 - root - INFO - Application exit.
+2024-03-29 22:28:57,228 - root - INFO - Application shutdown.
