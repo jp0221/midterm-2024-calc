@@ -6,7 +6,16 @@ class SaveHistoryCommand(Command):
         self.calculation_history = calculation_history
 
     def execute(self):
-        with open("calculation_history.txt", "w") as file:
-            for record in self.calculation_history.get_history():
-                file.write(record + "\n")
-        print("Calculation history saved.")
+        # Prompt the user for a filename, ensuring it ends with '.csv'
+        filename = input("Please enter a filename to save as (include '.csv'): ")
+        if not filename.endswith('.csv'):
+            print("Error: Filename must end with '.csv'.")
+            return
+
+        # Save the DataFrame to the file specified by the user
+        try:
+            self.calculation_history.history.to_csv(filename, index=False, header=False)
+            print(f"Calculation history saved to {filename}.")
+        except Exception as e:
+            print(f"Failed to save file: {e}")
+

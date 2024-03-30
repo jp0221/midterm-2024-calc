@@ -83,6 +83,7 @@ class App:
     
     def start(self):
         self.load_plugins()
+        self.register_history_commands()
         logging.info("Application started. Type 'exit' to exit.")
         try:
             while True:

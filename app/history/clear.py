@@ -8,3 +8,4 @@ class ClearHistoryCommand(Command):
     def execute(self):
         self.calculation_history.clear_history()
         print("Calculation history cleared.")
+
