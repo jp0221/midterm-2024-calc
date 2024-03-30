@@ -1,12 +1,17 @@
 import os
+import inspect
 import pkgutil
 import importlib
 import sys
-from app.commands import CommandHandler, Command
+from app.commands import CommandHandler, Command, ListCommandsCommand
 from dotenv import load_dotenv
 import logging
 import logging.config
-
+from app.history import CalculationHistory
+from app.history.load import LoadHistoryCommand
+from app.history.clear import ClearHistoryCommand
+from app.history.delete import DeleteHistoryCommand
+from app.history.save import SaveHistoryCommand
 
 class App:
     def __init__(self):
@@ -16,6 +21,9 @@ class App:
         self.settings = self.load_enviornment_variables()
         self.settings.setdefault('ENVIORNMENT', 'PRODUCTION')
         self.command_handler = CommandHandler()
+        self.calculation_history = CalculationHistory()
+
+        self.command_handler.register_command("menu", ListCommandsCommand(self.command_handler))
     
     def configure_logging(self):
         logging_conf_path = 'logging.conf'
@@ -50,9 +58,28 @@ class App:
     def register_plugin_commands(self, plugin_module, plugin_name):
         for item_name in dir(plugin_module):
             item = getattr(plugin_module, item_name)
+            # Check if the item is a Command subclass and not Command itself
             if isinstance(item, type) and issubclass(item, Command) and item is not Command:
-                self.command_handler.register_command(plugin_name, item())
-                logging.info(f"Command '{plugin_name}' from plugin '{plugin_name}' registered.")    
+                try:
+                    # Use inspect to safely check the parameters of the __init__ method
+                    params = inspect.signature(item.__init__).parameters
+                    if 'calculation_history' in params:
+                        command_instance = item(self.calculation_history)
+                    else:
+                        command_instance = item()
+                    self.command_handler.register_command(plugin_name.lower(), command_instance)
+                    logging.info(f"Command '{item_name}' from plugin '{plugin_name}' registered.")
+                except TypeError as e:
+                    logging.error(f"Failed to instantiate command '{item_name}' from plugin '{plugin_name}': {e}")
+                except ValueError as e:  # Handle cases where inspect cannot get the signature
+                    logging.error(f"Cannot inspect command '{item_name}' from plugin '{plugin_name}': {e}")
+   
+    
+    def register_history_commands(self):
+        self.command_handler.register_command("clear", ClearHistoryCommand(self.calculation_history))
+        self.command_handler.register_command("save", SaveHistoryCommand(self.calculation_history))
+        self.command_handler.register_command("load", LoadHistoryCommand(self.calculation_history))
+        self.command_handler.register_command("delete", DeleteHistoryCommand(self.calculation_history))
     
     def start(self):
         self.load_plugins()
